@@ -19,9 +19,8 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
  */
 
 function makeBoard() {
-  const row = Array(WIDTH).fill(null);
-
-  for (let i = 0; i < HEIGHT; i++) {
+  for (let y = 0; y < HEIGHT; y++) {
+    const row = Array(WIDTH).fill(null);
     board.push(row);
   }
 }
@@ -39,6 +38,7 @@ function makeHtmlBoard() {
   for (let x = 0; x < WIDTH; x++) {
     const headCell = document.createElement("td");
     headCell.setAttribute("id", `top-${x}`);
+    // event listener should be on top row instead of on each cell
     headCell.addEventListener("click", handleClick);
     top.append(headCell);
   }
