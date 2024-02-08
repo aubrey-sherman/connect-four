@@ -78,8 +78,8 @@ function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
   const piece = document.createElement('div');
   piece.classList.add("piece", `p${currPlayer}`);
-//  piece.setAttribute("class", "piece");
-//  piece.setAttribute("class", `p${}`)
+  //  piece.setAttribute("class", "piece");
+  //  piece.setAttribute("class", `p${}`)
   const pieceContainer = document.querySelector(`#c-${y}-${x}`);
   pieceContainer.append(piece);
 }
@@ -97,6 +97,24 @@ function checkForWin() {
 
     // TODO: Check four cells to see if they're all legal & all color of current
     // player
+
+    console.log(`I'm in _win.`);
+
+    const fourPieces = [];
+
+    for (let cell of cells) {
+      const y = cell[0];
+      const x = cell[1];
+      fourPieces.push(board[y][x]);
+      if (!(y < HEIGHT && x < WIDTH)) {
+        return false;
+      }
+    }
+
+    console.log("fourPieces =", fourPieces);
+    console.log("cells=", cells);
+
+    return fourPieces.every(val => val === currPlayer);
 
   }
 
