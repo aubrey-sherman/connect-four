@@ -98,24 +98,17 @@ function checkForWin() {
     // TODO: Check four cells to see if they're all legal & all color of current
     // player
 
-    console.log(`I'm in _win.`);
-
     const fourPieces = [];
 
     for (let cell of cells) {
       const y = cell[0];
       const x = cell[1];
-      fourPieces.push(board[y][x]);
       if (!(y < HEIGHT && x < WIDTH)) {
         return false;
       }
+      fourPieces.push(board[y][x]);
     }
-
-    console.log("fourPieces =", fourPieces);
-    console.log("cells=", cells);
-
     return fourPieces.every(val => val === currPlayer);
-
   }
 
   // using HEIGHT and WIDTH, generate "check list" of coordinates
@@ -129,9 +122,9 @@ function checkForWin() {
       // [ [y, x], [y, x], [y, x], [y, x] ]
 
       let horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
-      let vert;
-      let diagDL;
-      let diagDR;
+      let vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
+      let diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
+      let diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
 
       // find winner (only checking each win-possibility as needed)
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
