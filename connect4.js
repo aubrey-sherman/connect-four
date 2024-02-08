@@ -76,6 +76,12 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+  const piece = document.createElement('div');
+  piece.classList.add("piece", `p${currPlayer}`);
+//  piece.setAttribute("class", "piece");
+//  piece.setAttribute("class", `p${}`)
+  const pieceContainer = document.querySelector(`#c-${y}-${x}`);
+  pieceContainer.append(piece);
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
